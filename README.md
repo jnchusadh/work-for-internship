@@ -164,21 +164,7 @@ RestorePlayerState();
 - **Unity**: 2020.3 LTS 或更高版本
 - **平台**: Windows / macOS
 
-### 安装步骤
-
-1. **克隆仓库**
-git clone https://github.com/你的用户名/StardewVally.git
-cd StardewVally
-```
-
-2. **打开项目**
-   - 启动 Unity Hub
-   - 点击 "Add" 添加项目文件夹
-   - 打开项目（Unity 会自动导入资源）
-
-3. **运行游戏**
-   - 在 Project 窗口打开 `Assets/Scenes/Scene1_Farm.unity`
-   - 按 `Ctrl+P`（Windows）
+---
 
 ### 操作说明
 
@@ -205,6 +191,6 @@ cd StardewVally
 ## 👨‍💻 作者
 
 **你的名字**  
-- GitHub: [@你的用户名](https://github.com/你的用户名)
-- 邮箱: your.email@example.com
+- GitHub: [@jnchusadh](https://github.com/jnchusadh)
+- 邮箱: 18753953184@163.com
 
