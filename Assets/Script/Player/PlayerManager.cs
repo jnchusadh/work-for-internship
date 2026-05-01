@@ -71,6 +71,80 @@ public class PlayerManager : Singleton<PlayerManager>
         afterLiftToolAnimationPause = new WaitForSeconds(Settings.afterLiftToolAnimationPause);
         pickingAnimationPause = new WaitForSeconds(Settings.pickingAnimationPause);
         afterPickingAnimationPause = new WaitForSeconds(Settings.afterPickingAnimationPause);
+
+        EventHandler.AfterSceneLoadEvent += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        EventHandler.AfterSceneLoadEvent -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded()
+    {
+        EnablePlayerMove();
+        playerToolUseDisabled = false;
+
+        StartCoroutine(AutoSelectFirstItemDelayed());
+    }
+
+    private IEnumerator AutoSelectFirstItemDelayed()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        // Debug.Log("[PlayerManager] 开始自动选中第一个物品...");
+
+        List<InventoryItem> playerInventory = InventoryManager.Instance.inventoryLists[(int)InventoryLocation.player];
+        if (playerInventory != null && playerInventory.Count > 0)
+        {
+            int firstItemCode = playerInventory[0].itemCode;
+            ItemsDetails firstItemDetails = InventoryManager.Instance.GetItemsDetails(firstItemCode);
+
+            // Debug.Log($"[PlayerManager] 找到第一个物品: itemCode={firstItemCode}, itemType={firstItemDetails?.itemType}, gridRadius={firstItemDetails?.itemUsedGridRadius}");
+
+            if (firstItemDetails != null)
+            {
+                InventoryManager.Instance.SetSelectInventoryItem(InventoryLocation.player, firstItemCode);
+                // Debug.Log($"[PlayerManager] 已设置选中物品: {firstItemDetails.itemDescription}");
+
+                if (firstItemDetails.canBeCarried)
+                {
+                    ShowCarriedItem(firstItemCode);
+                    // Debug.Log("[PlayerManager] 显示手持物品");
+                }
+
+                GridCursor gridCursor = FindObjectOfType<GridCursor>();
+                if (gridCursor != null)
+                {
+                    gridCursor.ItemUseGridRadius = firstItemDetails.itemUsedGridRadius;
+                    gridCursor.SelectedItemType = firstItemDetails.itemType;
+
+                    if (firstItemDetails.itemUsedGridRadius > 0)
+                    {
+                        gridCursor.EnableCursor();
+                        // Debug.Log($"[PlayerManager] 光标已启用 | 半径:{firstItemDetails.itemUsedGridRadius} 类型:{firstItemDetails.itemType}");
+                    }
+                    else
+                    {
+                        // Debug.Log($"[PlayerManager] 物品gridRadius=0，光标保持禁用 | 类型:{firstItemDetails.itemType}");
+                    }
+                }
+                else
+                {
+                    // Debug.LogError("[PlayerManager] 未找到GridCursor！");
+                }
+
+                EventHandler.CallInventoryUpdateEvents(InventoryLocation.player, playerInventory);
+            }
+            else
+            {
+                // Debug.LogError($"[PlayerManager] 无法获取物品详情: itemCode={firstItemCode}");
+            }
+        }
+        else
+        {
+            // Debug.LogWarning("[PlayerManager] 物品栏为空或null！");
+        }
     }
 
     private void Update()

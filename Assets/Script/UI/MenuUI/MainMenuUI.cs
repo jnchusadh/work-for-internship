@@ -43,6 +43,7 @@ public class MainMenuUI : MonoBehaviour
     {
         if (SceneChangeManager.Instance != null)
         {
+            HideMainMenu();
             SceneChangeManager.Instance.FadeAndLoadScene(
                 SceneName.Scene1_Farm.ToString(),
                 spawnPos
@@ -50,7 +51,7 @@ public class MainMenuUI : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Scene1_Farm", LoadSceneMode.Additive);
+            Debug.LogError("SceneChangeManager Instance is null! Please ensure SceneChangeManager exists in the scene.");
         }
     }
 }

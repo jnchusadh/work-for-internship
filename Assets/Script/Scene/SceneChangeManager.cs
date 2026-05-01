@@ -19,7 +19,7 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
 
     public void FadeAndLoadScene(string sceneName,Vector3 spawnPos)
     {
-        //Debug.Log(&"FadeAndLoadScene called: {sceneName}, isFading: {isFading}");
+        //Debug.Log($"FadeAndLoadScene called: {sceneName}, isFading: {isFading}");
         if(isFading == false)
         {
             StartCoroutine(FadeAndchangeScene(sceneName.ToString(), spawnPos));
@@ -88,7 +88,7 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
     }
     IEnumerator LoadSceneAndSetActive(string sceneName)
     {
-        //Debug.Log(&"开始加载场景：{sceneName}");
+        //Debug.Log($"开始加载场景：{sceneName}");
         
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         
@@ -106,9 +106,9 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
-            
-            // 只卸载游戏世界场景（buildIndex >= 1）
-            if (scene.buildIndex >= 1)
+
+            // 卸载所有非持久化场景（包括主菜单场景）
+            if (scene.buildIndex >= 0 && scene.name != SceneManager.GetActiveScene().name)
             {
                 scenesToUnload.Add(scene.name);
             }

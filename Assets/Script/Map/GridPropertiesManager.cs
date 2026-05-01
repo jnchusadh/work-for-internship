@@ -104,7 +104,7 @@ public class GridPropertiesManager : Singleton<GridPropertiesManager>,ISaveable
             return;
         }
         
-        // Debug.Log(&"InitialiseGridProperties - 开始初始化，共有 {so_GridPropertiesArray.Length} 个 SO_GridProperty");
+        // Debug.Log($"InitialiseGridProperties - 开始初始化，共有 {so_GridPropertiesArray.Length} 个 SO_GridProperty");
         
         foreach(SO_GridProperty so_GridProperty in so_GridPropertiesArray)
         {
@@ -427,6 +427,86 @@ public class GridPropertiesManager : Singleton<GridPropertiesManager>,ISaveable
         {
             return;
         }
+
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        // Debug.Log($"[GridPropertiesManager] 场景已加载: {currentSceneName}，开始重新初始化网格属性...");
+
+        InitialiseGridPropertiesForScene(currentSceneName);
+    }
+
+    private void InitialiseGridPropertiesForScene(string sceneName)
+    {
+        if(so_GridPropertiesArray == null || so_GridPropertiesArray.Length == 0)
+        {
+            // Debug.LogError("so_GridPropertiesArray is null or empty!");
+            return;
+        }
+
+        Dictionary<string, GridPropertyDetails> newGridPropertyDict = new Dictionary<string, GridPropertyDetails>();
+
+        foreach(SO_GridProperty so_GridProperty in so_GridPropertiesArray)
+        {
+            if(so_GridProperty == null || so_GridProperty.gridPropertyList == null)
+            {
+                continue;
+            }
+
+            if(so_GridProperty.sceneName.ToString() != sceneName)
+            {
+                continue;
+            }
+
+            // Debug.Log($"[GridPropertiesManager] 为场景 {sceneName} 加载网格属性，共 {so_GridProperty.gridPropertyList.Count} 个格子");
+
+            foreach(GridProperty gridProperty in so_GridProperty.gridPropertyList)
+            {
+                if(gridProperty == null || gridProperty.gridCoordinate == null)
+                {
+                    continue;
+                }
+
+                GridPropertyDetails gridPropertyDetails = GetGridDetials(
+                    gridProperty.gridCoordinate.x,
+                    gridProperty.gridCoordinate.y,
+                    newGridPropertyDict);
+
+                if(gridPropertyDetails == null)
+                {
+                    gridPropertyDetails = new GridPropertyDetails();
+                }
+
+                switch (gridProperty.gridBoolProperty)
+                {
+                    case GridBoolProperty.diggable:
+                        gridPropertyDetails.isDigglable = gridProperty.gridBoolValue;
+                        break;
+                    case GridBoolProperty.canDropItem:
+                        gridPropertyDetails.canDropItem = gridProperty.gridBoolValue;
+                        break;
+                    case GridBoolProperty.canPlaceFurniture:
+                        gridPropertyDetails.canPlaceFurniture = gridProperty.gridBoolValue;
+                        break;
+                    case GridBoolProperty.isPath:
+                        gridPropertyDetails.isPath = gridProperty.gridBoolValue;
+                        break;
+                    case GridBoolProperty.isNPCObstacle:
+                        gridPropertyDetails.isNPCObstacle = gridProperty.gridBoolValue;
+                        break;
+                    default:
+                        break;
+                }
+
+                SetGridDetials(
+                    gridProperty.gridCoordinate.x,
+                    gridProperty.gridCoordinate.y,
+                    gridPropertyDetails,
+                    newGridPropertyDict);
+            }
+        }
+
+        gridPropertyDict = newGridPropertyDict;
+
+        // Debug.Log($"[GridPropertiesManager] 场景 {sceneName} 网格属性初始化完成，共 {gridPropertyDict.Count} 个格子");
     }
 
     public void ISaveableRegister()

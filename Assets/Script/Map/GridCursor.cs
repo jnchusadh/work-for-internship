@@ -100,13 +100,38 @@ public class GridCursor : MonoBehaviour
         // 使用射线投射获取地面上的精确点
         Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        
+
         Vector3 groundWorldPos = new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0f);
-        return grid.WorldToCell(groundWorldPos);
+        Vector3Int gridPos = grid.WorldToCell(groundWorldPos);
+
+        /*
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log($"[GridCursor] 坐标转换详情 | " +
+                     $"鼠标屏幕:{mouseScreenPos} | " +
+                     $"世界坐标:{mouseWorldPos:F2} | " +
+                     $"地面坐标:{groundWorldPos:F2} | " +
+                     $"网格坐标:{gridPos} | " +
+                     $"Grid.cellSize:{grid.cellSize}");
+        }
+        */
+
+        return gridPos;
     }
     public Vector3Int GetGridPostionForPlayer()
     {
-        return grid.WorldToCell(PlayerManager.Instance.transform.position);
+        Vector3Int playerGridPos = grid.WorldToCell(PlayerManager.Instance.transform.position);
+
+        /*
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log($"[GridCursor] 玩家位置 | " +
+                     $"世界坐标:{PlayerManager.Instance.transform.position:F2} | " +
+                     $"网格坐标:{playerGridPos}");
+        }
+        */
+
+        return playerGridPos;
     }
     public Vector2 GetRectTransformPositionForCursor(Vector3Int gridPos)
     {
@@ -135,12 +160,14 @@ public class GridCursor : MonoBehaviour
         if(Mathf.Abs(cursorGridPos.x - playerGridPos.x)> ItemUseGridRadius||
             Mathf.Abs(cursorGridPos.y - playerGridPos.y) > ItemUseGridRadius)
         {
+            // Debug.LogWarning($"[GridCursor] 光标无效：超出使用范围 | 光标位置:{cursorGridPos} 玩家位置:{playerGridPos} 半径:{ItemUseGridRadius}");
             SetCursorToInvalid();
             return;
         }
         ItemsDetails itemsDetails = InventoryManager.Instance.GetSeclectedInventoryItemDetails(InventoryLocation.player);
         if (itemsDetails == null)
         {
+            // Debug.LogWarning("[GridCursor] 光标无效：未选中任何物品");
             SetCursorToInvalid();
             return;
         }
@@ -154,6 +181,7 @@ public class GridCursor : MonoBehaviour
                 case ItemType.Seed:
                     if (!IsCursorValidForSeed(gridPropertyDetails))
                     {
+                        // Debug.LogWarning($"[GridCursor] 光标无效：种子无法在此处种植 | 位置:{cursorGridPos} canDropItem:{gridPropertyDetails.canDropItem}");
                         SetCursorToInvalid();
                         return;
                     }
@@ -161,6 +189,7 @@ public class GridCursor : MonoBehaviour
                 case ItemType.Commodity:
                     if (!IsCursorValidForCommodity(gridPropertyDetails))
                     {
+                        // Debug.LogWarning($"[GridCursor] 光标无效：商品无法丢弃 | 位置:{cursorGridPos} canDropItem:{gridPropertyDetails.canDropItem}");
                         SetCursorToInvalid();
                         return;
                     }
@@ -170,6 +199,7 @@ public class GridCursor : MonoBehaviour
                 case ItemType.Collecting_tool:
                     if (!IsCursorValidForTool(gridPropertyDetails, itemsDetails))
                     {
+                        // Debug.LogWarning($"[GridCursor] 光标无效：工具无法使用 | 物品类型:{itemsDetails.itemType} 位置:{cursorGridPos} isDigglable:{gridPropertyDetails?.isDigglable} daysSinceDug:{gridPropertyDetails?.daysSinceDug}");
                         SetCursorToInvalid();
                         return;
                     }
@@ -183,6 +213,7 @@ public class GridCursor : MonoBehaviour
         }
         else
         {
+            // Debug.LogWarning($"[GridCursor] 光标无效：网格属性为空 | 位置:({cursorGridPos.x},{cursorGridPos.y})");
             SetCursorToInvalid();
             return;
         }
