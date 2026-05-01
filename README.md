@@ -191,6 +191,6 @@ RestorePlayerState();
 ## 👨‍💻 作者
 
 **你的名字**  
-- GitHub: [@你的用户名](https://github.com/你的用户名)
-- 邮箱: your.email@example.com
+- GitHub: [@jnchusadh](https://github.com/jnchusadh)
+- 邮箱: 18753953184@163.com
 
