@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ItemParentTransform
+  - GroundDecoration1
+  - GroundDecoration2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground1
+    uniqueID: 462599507
+    locked: 0
+  - name: Ground2
+    uniqueID: 1787624515
+    locked: 0
+  - name: Ground3
+    uniqueID: 2683263229
+    locked: 0
+  - name: GroundDecoration1
+    uniqueID: 2052706859
+    locked: 0
+  - name: GroundDecoration2
+    uniqueID: 3308047873
+    locked: 0
+  - name: Instance
+    uniqueID: 1599229115
+    locked: 0
+  - name: Front1
+    uniqueID: 3877117243
+    locked: 0
+  - name: Front2
+    uniqueID: 3178330735
+    locked: 0
+  - name: Collision
+    uniqueID: 3273100019
+    locked: 0

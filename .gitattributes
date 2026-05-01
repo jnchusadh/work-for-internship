@@ -1,0 +1,21 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.cs text diff=csharp
+*.js text diff=javascript
+*.json text
+
+# Documentation
+*.md text
+*.txt text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.mp3 binary
+*.wav binary
+*.prefab binary
+*.asset binary
+*.unity binary

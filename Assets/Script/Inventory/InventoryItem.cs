@@ -1,0 +1,5 @@
+public struct InventoryItem
+{
+    public int itemCode;
+    public int itemQuanity;
+}

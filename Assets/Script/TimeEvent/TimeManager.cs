@@ -1,0 +1,120 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TimeManager : Singleton<TimeManager>
+{
+    private int gameYear = 1;
+    private Season season = Season.spring;
+    private int gameDay = 1;
+    private int gameHour = 6;
+    private int gameMinute = 30;
+    private int gameSecond = 0;
+    private string gameWeek = "Mon";
+    private bool isStop = false;
+    private float gameTick = 0f;
+
+
+    private void Start()
+    {
+        EventHandler.CallgameTimeMinuteEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+    }
+    private void Update()
+    {
+        if(isStop == false)
+        {
+            GameTick()
+;        }
+    }
+
+    private void GameTick()
+    {
+        gameTick += Time.deltaTime;
+        if (gameTick > Settings.secondPerGameTime)
+        {
+            gameTick -= Settings.secondPerGameTime;
+
+            UpdateGameSecond();
+        }
+    }
+
+    private void UpdateGameSecond()
+    {
+        gameSecond++;
+        if (gameSecond > 59)
+        {
+            gameSecond = 0;
+            gameMinute++;
+            if (gameMinute > 59)
+            {
+                gameHour++;
+                gameMinute = 0;
+                if (gameHour > 23)
+                {
+                    gameHour = 0;
+                    gameDay++;
+                    if (gameDay > 30)
+                    {
+                        gameDay = 1;
+                        int gs = (int)season;
+                        gs++;
+                        season = (Season)gs;
+                        if (gs > 3)
+                        {
+                            gs = 0;
+                            season = (Season)gs;
+                            gameYear++;
+                            EventHandler.CallgameTimeYearEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+                        }
+                        EventHandler.CallgameTimeSeasonEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+                    }
+                    gameWeek = GetDayOfWeek();
+                    EventHandler.CallgameTimeDayEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+                }
+                EventHandler.CallgameTimeHourEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+            }
+            EventHandler.CallgameTimeMinuteEvent(gameYear, season, gameDay, gameWeek, gameHour, gameMinute, gameSecond);
+            //Debug.Log("GameYear:" + gameYear + "GameSeason:" + season + "GameDay:" + gameDay + "GameHour:" + gameHour + "GameMinute" + gameMinute);
+        }
+    }
+
+    private string GetDayOfWeek()
+    {
+        int totalDays = ((int)season * 30) + gameDay;
+        int dayOfWeek = totalDays % 7;
+        switch (dayOfWeek)
+        {
+            case 1:
+                return "Mon";
+            case 2:
+                return "Tue";
+            case 3:
+                return "Wed";
+            case 4:
+                return "Thu";
+            case 5:
+                return "Fri";
+            case 6:
+                return "Sat";
+            case 0:
+                return "Sun";
+            default:
+                return "";
+                
+        }
+    }
+    public void TestAdvanceGameMinute()
+    {
+        for(int i = 0; i < 60; i++)
+        {
+            UpdateGameSecond();
+        }
+    }
+    public void TestAdvanceGameDay()
+    {
+        for(int i = 0; i < 86400; i++)
+        {
+            UpdateGameSecond();
+        }
+    }
+}

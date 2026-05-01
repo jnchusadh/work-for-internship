@@ -1,0 +1,303 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7f6f0653307cb4daf049ae64f43604, type: 3}
+  m_Name: so_ItemList
+  m_EditorClassIdentifier: 
+  itemsDetails:
+  - itemCode: 0
+    itemType: 0
+    itemDescription: Canyon OakAcorn
+    itemsSprite: {fileID: 21300000, guid: 730e572c78cf0244ca0db36bb8f3af7f, type: 3}
+    itemLongDescription: From small acorn do lage oak grow
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 1
+    itemType: 1
+    itemDescription: Pumpkin
+    itemsSprite: {fileID: 21300000, guid: f0d720006ae6c9e468cc99a9f1713ba1, type: 3}
+    itemLongDescription: 'A juicy,fat,ripe pumpkin '
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 1
+    canBeCarried: 1
+  - itemCode: 2
+    itemType: 1
+    itemDescription: Sweetcorn
+    itemsSprite: {fileID: 21300000, guid: 081b5033ea188cb48b5d44b99ab920bc, type: 3}
+    itemLongDescription: Juicy,fresh,corn
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 1
+    canBeCarried: 1
+  - itemCode: 3
+    itemType: 2
+    itemDescription: A Basic Watering Can
+    itemsSprite: {fileID: 21300136, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: An essential tool for any farm
+    itemUsedGridRadius: 1
+    itemUsedRadius: 0
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 4
+    itemType: 3
+    itemDescription: 'A Basic Hoeing Tool  '
+    itemsSprite: {fileID: 21300052, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: An essential tool for any farm
+    itemUsedGridRadius: 1
+    itemUsedRadius: 0
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 5
+    itemType: 4
+    itemDescription: A Basic Axe
+    itemsSprite: {fileID: 21300010, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: An essential tool for chopping down trees
+    itemUsedGridRadius: 1
+    itemUsedRadius: 0
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 6
+    itemType: 0
+    itemDescription: ParsnipSeeds
+    itemsSprite: {fileID: 21300000, guid: 7da78110e28e0f74aaa3ef4a41f4c0ed, type: 3}
+    itemLongDescription: Parsnip seeds take 5days to grow
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 7
+    itemType: 1
+    itemDescription: Parsnip
+    itemsSprite: {fileID: 21300000, guid: 0a1268bf801d5304ebf16458d7309ac1, type: 3}
+    itemLongDescription: Parsnips are full of fibre and vitamins
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 8
+    itemType: 1
+    itemDescription: Wood
+    itemsSprite: {fileID: 21300000, guid: e26dc0d638731ec47abe9c4b3cae62ac, type: 3}
+    itemLongDescription: A useful thing for many things
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 9
+    itemType: 0
+    itemDescription: Blue Spurce Pine Cone
+    itemsSprite: {fileID: 21300000, guid: 5eb84bf51d351da428f95a1296f6a397, type: 3}
+    itemLongDescription: Pine Cones are packed with seeds to grow new trees
+    itemUsedGridRadius: 1
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 10
+    itemType: 0
+    itemDescription: Canyon Oak Tree Stump
+    itemsSprite: {fileID: 7154603021615155856, guid: d241c496741a12d4290e12ba81dd6724, type: 3}
+    itemLongDescription: The stump of a canyon tree
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 11
+    itemType: 0
+    itemDescription: Blue Spurce Tree Stump
+    itemsSprite: {fileID: -341119608263849502, guid: 5d22327a2a3d2a049a8a59a708d527fe, type: 3}
+    itemLongDescription: The stump of a spurce tree
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 12
+    itemType: 4
+    itemDescription: Wicker Basket
+    itemsSprite: {fileID: 21300504, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: A basket for harvesting produce you have grown
+    itemUsedGridRadius: 10
+    itemUsedRadius: 0
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 13
+    itemType: 5
+    itemDescription: A basic Pickaxe
+    itemsSprite: {fileID: 21300094, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: A strong sturdy basic pickaxe
+    itemUsedGridRadius: 1
+    itemUsedRadius: 0
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 14
+    itemType: 0
+    itemDescription: Stone1 Seed
+    itemsSprite: {fileID: 21300000, guid: 4fb548784c08c2c40b86a99493efa98d, type: 3}
+    itemLongDescription: 
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 15
+    itemType: 1
+    itemDescription: Stone
+    itemsSprite: {fileID: 21300000, guid: 7700e9e59e6f58e4598ea8f2e5a84cc1, type: 3}
+    itemLongDescription: who has many practical uses
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 16
+    itemType: 0
+    itemDescription: 'Stone 2 Seed '
+    itemsSprite: {fileID: 21300000, guid: ffd3a07e9702a614284d1e5a4be9f532, type: 3}
+    itemLongDescription: ' '
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 17
+    itemType: 6
+    itemDescription: A basic Scythe For Reaping
+    itemsSprite: {fileID: 21300506, guid: 853ac38383c680342ac7e688bf29b197, type: 3}
+    itemLongDescription: A basic sharp scythe great for cutting grass
+    itemUsedGridRadius: 0
+    itemUsedRadius: 1.5
+    isStartingItem: 1
+    canBePickUp: 1
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 18
+    itemType: 8
+    itemDescription: Grass1
+    itemsSprite: {fileID: 21300000, guid: 207ad99171e171b418bcaaa396d5a6f6, type: 3}
+    itemLongDescription: ' '
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 19
+    itemType: 8
+    itemDescription: Grass2
+    itemsSprite: {fileID: 21300000, guid: e452dd2aa629f624390a9ba516a7c47e, type: 3}
+    itemLongDescription: ' '
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 20
+    itemType: 1
+    itemDescription: Weed
+    itemsSprite: {fileID: 21300000, guid: 25925800440b0e84f9533a314ddca6b5, type: 3}
+    itemLongDescription: Weed
+    itemUsedGridRadius: 2
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 1
+    canBeDropped: 1
+    canBeEaten: 0
+    canBeCarried: 1
+  - itemCode: 21
+    itemType: 8
+    itemDescription: Prickly Cactus
+    itemsSprite: {fileID: 21300000, guid: 37e09848a493a0a4b89a743f73f75963, type: 3}
+    itemLongDescription: Prickly Cactus
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 22
+    itemType: 9
+    itemDescription: Chair
+    itemsSprite: {fileID: 21300000, guid: 2a61f48c8f2dfed4da6f2f8e2485ee15, type: 3}
+    itemLongDescription: Cair
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
+  - itemCode: 23
+    itemType: 9
+    itemDescription: Table
+    itemsSprite: {fileID: 21300000, guid: 60f7a57556be87841a8cabc94054df28, type: 3}
+    itemLongDescription: Wooden Table
+    itemUsedGridRadius: 0
+    itemUsedRadius: 0
+    isStartingItem: 0
+    canBePickUp: 0
+    canBeDropped: 0
+    canBeEaten: 0
+    canBeCarried: 0
