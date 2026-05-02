@@ -107,8 +107,8 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
         {
             Scene scene = SceneManager.GetSceneAt(i);
 
-            // 卸载所有非持久化场景（包括主菜单场景）
-            if (scene.buildIndex >= 0 && scene.name != SceneManager.GetActiveScene().name)
+            // 卸载所有非持久化场景，保留PlayerScene（包含相机和UI）
+            if (scene.buildIndex > 0)
             {
                 scenesToUnload.Add(scene.name);
             }
